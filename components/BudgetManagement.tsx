@@ -106,12 +106,12 @@ export const BudgetManagement = ({ subscriptions, totalMonthly }: BudgetManageme
   const yearlyStatus = getBudgetStatus(yearlyTotal, budgetData.yearlyBudget);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+    <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">予算管理</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800">予算管理</h2>
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 font-semibold transition-colors duration-200"
+          className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 font-semibold transition-colors duration-200 text-sm sm:text-base"
         >
           {isEditing ? 'キャンセル' : '予算設定'}
         </button>
@@ -119,7 +119,7 @@ export const BudgetManagement = ({ subscriptions, totalMonthly }: BudgetManageme
 
       {isEditing ? (
         <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 月額予算（円）

@@ -85,10 +85,10 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
   }, [applyFilters]);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">検索・フィルター</h2>
+    <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+      <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">検索・フィルター</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
         {/* サービス名検索 */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -99,7 +99,7 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Netflix, Spotify..."
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors text-sm sm:text-base"
           />
         </div>
 
@@ -113,7 +113,7 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
             value={priceFilter}
             onChange={(e) => setPriceFilter(e.target.value)}
             placeholder="1000"
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors text-sm sm:text-base"
           />
         </div>
 
@@ -125,7 +125,7 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
           <select
             value={billingCycleFilter}
             onChange={(e) => setBillingCycleFilter(e.target.value as 'all' | 'monthly' | 'yearly')}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors text-sm sm:text-base"
           >
             <option value="all">すべて</option>
             <option value="monthly">月額</option>
@@ -134,7 +134,7 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* ソート条件 */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -143,7 +143,7 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as 'name' | 'price' | 'nextBilling')}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors text-sm sm:text-base"
           >
             <option value="name">サービス名</option>
             <option value="price">月額料金</option>
@@ -159,7 +159,7 @@ export const SearchAndFilter = ({ subscriptions, onFilteredResults }: SearchAndF
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-gray-500 focus:outline-none transition-colors text-sm sm:text-base"
           >
             <option value="asc">昇順</option>
             <option value="desc">降順</option>

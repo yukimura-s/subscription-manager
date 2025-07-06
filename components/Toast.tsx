@@ -61,24 +61,24 @@ export const Toast = ({ id, type, title, message, duration = 5000, onClose }: To
   const styles = getTypeStyles();
 
   return (
-    <div className={`border rounded-lg p-4 shadow-lg max-w-md w-full ${styles.bg} animate-slide-in`}>
+    <div className={`border rounded-lg p-3 sm:p-4 shadow-lg max-w-md w-full ${styles.bg} animate-slide-in`}>
       <div className="flex items-start gap-3">
         <div className={`text-lg ${styles.iconColor}`}>
           {styles.icon}
         </div>
         <div className="flex-1">
-          <h4 className={`font-semibold ${styles.titleColor}`}>
+          <h4 className={`font-semibold text-sm sm:text-base ${styles.titleColor}`}>
             {title}
           </h4>
           {message && (
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-xs sm:text-sm text-gray-600 mt-1">
               {message}
             </p>
           )}
         </div>
         <button
           onClick={() => onClose(id)}
-          className="text-gray-400 hover:text-gray-600 ml-2"
+          className="text-gray-400 hover:text-gray-600 ml-2 text-lg sm:text-xl min-w-[24px] h-6 flex items-center justify-center"
         >
           ×
         </button>
@@ -91,7 +91,7 @@ export const ToastContainer = ({ toasts, onClose }: { toasts: ToastProps[]; onCl
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2">
+    <div className="fixed top-4 right-4 sm:right-4 left-4 sm:left-auto z-50 space-y-2">
       {toasts.map(toast => (
         <Toast key={toast.id} {...toast} onClose={onClose} />
       ))}

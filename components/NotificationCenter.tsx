@@ -132,7 +132,7 @@ export const NotificationCenter = ({ subscriptions, budgetLimit, totalMonthly }:
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 top-full mt-2 w-96 bg-white rounded-xl shadow-xl border z-50 max-h-96 overflow-hidden">
+          <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white rounded-xl shadow-xl border z-50 max-h-96 overflow-hidden">
             <div className="p-4 border-b bg-gray-50 rounded-t-xl">
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-gray-800">通知センター</h3>
@@ -203,7 +203,7 @@ export const NotificationCenter = ({ subscriptions, budgetLimit, totalMonthly }:
       {/* 予算設定モーダル */}
       {showBudgetModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+          <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-bold text-gray-800 mb-4">月額予算設定</h2>
             
             <div className="mb-4">
@@ -222,16 +222,16 @@ export const NotificationCenter = ({ subscriptions, budgetLimit, totalMonthly }:
               </p>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setBudgetLimit(budget)}
-                className="flex-1 bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 font-semibold transition-colors duration-200"
+                className="flex-1 bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 font-semibold transition-colors duration-200 text-center"
               >
                 設定
               </button>
               <button
                 onClick={() => setShowBudgetModal(false)}
-                className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg hover:bg-gray-300 font-semibold transition-colors duration-200"
+                className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg hover:bg-gray-300 font-semibold transition-colors duration-200 text-center"
               >
                 キャンセル
               </button>
