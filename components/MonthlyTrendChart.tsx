@@ -56,8 +56,22 @@ export const MonthlyTrendChart = ({ subscriptions }: MonthlyTrendChartProps) => 
       {
         label: '月額支出',
         data: monthlyTotals,
-        backgroundColor: 'rgba(59, 130, 246, 0.8)',
-        borderColor: 'rgba(59, 130, 246, 1)',
+        backgroundColor: [
+          'rgba(59, 130, 246, 0.8)',   // ブルー
+          'rgba(16, 185, 129, 0.8)',   // グリーン
+          'rgba(245, 101, 101, 0.8)',  // レッド
+          'rgba(251, 191, 36, 0.8)',   // イエロー
+          'rgba(139, 92, 246, 0.8)',   // パープル
+          'rgba(236, 72, 153, 0.8)',   // ピンク
+        ],
+        borderColor: [
+          'rgba(59, 130, 246, 1)',
+          'rgba(16, 185, 129, 1)',
+          'rgba(245, 101, 101, 1)',
+          'rgba(251, 191, 36, 1)',
+          'rgba(139, 92, 246, 1)',
+          'rgba(236, 72, 153, 1)',
+        ],
         borderWidth: 2,
         borderRadius: 8,
         borderSkipped: false,
@@ -75,7 +89,9 @@ export const MonthlyTrendChart = ({ subscriptions }: MonthlyTrendChartProps) => 
       tooltip: {
         callbacks: {
           label: (context: any) => {
-            return `¥${context.raw.toLocaleString()}`;
+            const month = context.label;
+            const value = context.raw;
+            return `${month}: ¥${value.toLocaleString()}`;
           }
         }
       }

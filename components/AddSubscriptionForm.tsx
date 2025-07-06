@@ -55,6 +55,20 @@ export const AddSubscriptionForm = ({ onAdd, onCancel, existingNames }: AddSubsc
     : subscriptionTemplates.slice(0, 20);
 
   const handleSubmit = () => {
+    // 必須項目のチェック
+    if (!formData.name.trim()) {
+      setError('サービス名を入力してください');
+      return;
+    }
+    if (!formData.price.trim() || parseFloat(formData.price) <= 0) {
+      setError('正しい料金を入力してください');
+      return;
+    }
+    if (!formData.nextBilling) {
+      setError('次回請求日を入力してください');
+      return;
+    }
+    
     try {
       onAdd(formData);
       setFormData({ name: '', price: '', billingCycle: 'monthly', nextBilling: '' });
@@ -132,7 +146,7 @@ export const AddSubscriptionForm = ({ onAdd, onCancel, existingNames }: AddSubsc
         <div className="relative">
           <input
             type="text"
-            placeholder="サービス名を入力..."
+            placeholder="サービス名を入力... *"
             value={formData.name}
             onChange={(e) => {
               setFormData({...formData, name: e.target.value});
@@ -141,6 +155,7 @@ export const AddSubscriptionForm = ({ onAdd, onCancel, existingNames }: AddSubsc
             }}
             onFocus={() => setShowSuggestions(formData.name.length > 0)}
             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-gray-500 focus:outline-none transition-colors text-gray-900"
+            required
           />
           {showSuggestions && filteredSuggestions.length > 0 && (
             <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
@@ -167,13 +182,15 @@ export const AddSubscriptionForm = ({ onAdd, onCancel, existingNames }: AddSubsc
         </div>
         <input
           type="number"
-          placeholder="料金（円）"
+          placeholder="料金（円） *"
           value={formData.price}
           onChange={(e) => {
             setFormData({...formData, price: e.target.value});
             setError('');
           }}
           className="border border-gray-300 rounded-lg px-4 py-3 focus:border-gray-500 focus:outline-none transition-colors text-gray-900"
+          required
+          min="1"
         />
         <select
           value={formData.billingCycle}
@@ -188,6 +205,8 @@ export const AddSubscriptionForm = ({ onAdd, onCancel, existingNames }: AddSubsc
           value={formData.nextBilling}
           onChange={(e) => setFormData({...formData, nextBilling: e.target.value})}
           className="border border-gray-300 rounded-lg px-4 py-3 focus:border-gray-500 focus:outline-none transition-colors text-gray-900"
+          required
+          title="次回請求日 *"
         />
       </div>
       <div className="flex gap-3">
